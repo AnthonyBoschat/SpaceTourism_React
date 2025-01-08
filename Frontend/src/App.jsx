@@ -1,3 +1,7 @@
+import Header from "@Containers/Header/Header";
+import Home from "@Pages/Home/Home";
+import "./App.scss"
+
 
 
 export default function App() {
@@ -5,7 +9,8 @@ export default function App() {
   
   return (
     <>
-      <h1>Hello</h1>
+      <Header/>
+      <Home/>
     </>
   )
 }

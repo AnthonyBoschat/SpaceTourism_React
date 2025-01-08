@@ -8,7 +8,9 @@
         "@Layout/*": ["Layout/*"],
         "@Pages/*": ["Pages/*"],
         
-        // "@Physics/*": ["Physics/*"],
+        "@Physics/*": ["Physics/*"],
+        "@Assets/*": ["Physics/Assets/*"],
+        "@Datas/*": ["Physics/Datas/*"],
         "@Sass/*": ["Physics/Sass/*"],
         "@Redux/*": ["Physics/Redux/*"],
         "@Query/*": ["Physics/Query/*"],

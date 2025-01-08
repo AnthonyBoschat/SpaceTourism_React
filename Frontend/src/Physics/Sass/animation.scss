@@ -1,0 +1,102 @@
+@keyframes navigation-hover-apparition{
+    from{
+        transform: translateX(-100%);
+    }to{
+        transform: translateX(0%);
+    }
+}
+
+@keyframes home-explore-button-hover-apparition{
+    0%{
+        width: 9.3rem;
+        height: 9.3rem;
+    }80%{
+        width: 14rem;
+        height: 14rem;
+    }
+    100%{
+        width: 12rem;
+        height: 12rem;
+    }
+}
+
+@keyframes home-explore-button-hover-breath{
+    0%{
+        width: 9.3rem;
+        height: 9.3rem;
+    }100%{
+        width: 12rem;
+        height: 12rem;
+        opacity: 0;
+    }
+}
+
+@keyframes phone-navigation-apparition{
+    from{
+        transform: translateX(15.875rem);
+    }to{
+        transform: translateX(0rem);
+    }
+}
+.animationClass_phone-navigation-apparition{
+    animation: phone-navigation-apparition 0.3s ease-in-out forwards;
+}
+@keyframes phone-navigation-disparition{
+    from{
+        transform: translateX(0rem);
+    }to{
+        transform: translateX(15.875rem);
+    }
+}
+.animationClass_phone-navigation-disparition{
+    animation: phone-navigation-disparition 0.3s ease-in-out forwards;
+}
+
+
+/* PAGE DESTINATION : Déplace le mask d'ombrage sur la planète pour la dissimuler le temps de la transition */
+@keyframes mask-planet-hide-planet{
+    0%{
+        left: -25%;
+        top: -25%;
+    }45%{
+        left: -65%;
+        top: -65%;
+    }55%{
+        left: -65%;
+        top: -65%;
+    }100%{
+        left: -25%;
+        top: -25%;
+    }
+}
+.animationClass_mask-planet-hide-planet{
+    animation: mask-planet-hide-planet 1s ease-in-out forwards;
+}
+
+/* PAGE DESTINATION : Créer un fondu pour le contenu le temps de l'animation du mask d'ombrage */
+@keyframes opacity-out-in{
+    50%{
+        opacity: 0;
+    }
+}
+.animationClass_opacity-out-in-1000{
+    animation: opacity-out-in 1s ease-in-out forwards;
+}
+
+
+/* PAGE DESTINATION : Rend les boutons de nom de planete cliquable désactiver le temps de la transition */
+@keyframes make-disabled{
+    0%{
+        pointer-events: none;
+        opacity: 1;
+    }50%{
+        pointer-events: none;
+        opacity: 0.5;
+    }100%{
+        pointer-events: none;
+        opacity: 1;
+    }
+}
+.animationClass_make-disabled{
+    animation: make-disabled 1s ease-in-out forwards;
+}

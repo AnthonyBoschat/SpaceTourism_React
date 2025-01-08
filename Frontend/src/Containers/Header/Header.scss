@@ -1,0 +1,32 @@
+@use "../../Physics/Sass/constants.scss" as v;
+
+header{
+    // height: 6rem;
+    width: 100%;
+    
+    >.container{
+        padding-left: 24px;
+        padding-right: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        svg.logo{
+            fill: v.$lighter;
+            width: 2.5rem;
+            height: 2.5rem;
+        }
+    
+        button.phone-open-menu{
+            @media(min-width: 768px){
+                display: none;
+            }
+            svg{
+                width: 2rem;
+                height: 2rem;
+                fill: v.$light;
+            }
+        }
+    }
+
+}

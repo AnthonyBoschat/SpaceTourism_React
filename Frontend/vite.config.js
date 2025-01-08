@@ -14,8 +14,10 @@ export default defineConfig({
       "@Layout":path.resolve(__dirname, "./src/Layout"),
       "@Pages":path.resolve(__dirname, "./src/Pages"),
 
-      // "@Physics":path.resolve(__dirname, "./src/Physics/"),
+      "@Physics":path.resolve(__dirname, "./src/Physics/"),
       "@Sass":path.resolve(__dirname, "./src/Physics/Sass"),
+      "@Datas":path.resolve(__dirname, "./src/Physics/Datas"),
+      "@Assets":path.resolve(__dirname, "./src/Physics/Assets"),
       "@Redux":path.resolve(__dirname, "./src/Physics/Redux"),
       "@Query":path.resolve(__dirname, "./src/Physics/Query"),
       "@Services":path.resolve(__dirname, "./src/Physics/Services"),
