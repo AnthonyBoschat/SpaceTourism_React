@@ -4,6 +4,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import Home from "@Pages/Home/Home";
 import Destination from "@Pages/Destination/Destination";
 import { useEffect, useState } from "react";
+import Crew from "@Pages/Crew/Crew";
 
 
 
@@ -26,6 +27,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/destination" element={<Destination/>}/>
+        <Route path="/crew" element={<Crew/>}/>
       </Routes>
     </div>
   )

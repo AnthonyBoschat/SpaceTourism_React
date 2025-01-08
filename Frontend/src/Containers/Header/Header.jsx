@@ -1,7 +1,10 @@
 import { useRef, useState } from "react"
 import "./Header.scss"
+import { useLocation } from "react-router-dom"
 
 export default function Header(){
+
+    const location = useLocation()
 
     const navigationsRoutes = [
         {href:"/", label:"Home"},
@@ -42,7 +45,7 @@ export default function Header(){
                     </div>
                     <div className="nav-button-layout">
                         {navigationsRoutes.map((route, index) => (
-                            <a key={index} href={route.href}>
+                            <a key={index} href={route.href} className={location.pathname === route.href ? "selected" : ""}>
                                 <span>0{index}</span>
                                 {route.label}
                             </a>

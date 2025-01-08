@@ -5,7 +5,7 @@ export default function Home(){
 
 
     return(
-        <main>
+        <main className="main-home">
 
             <div className="presentation">
                 <h1>

@@ -11,31 +11,25 @@ export default function Destination(){
     const selectedPlanet = useSelector(store => store.destination.selectedPlanet)
 
     const [planetIsChanging, setPlanetIsChanging] = useState(false)
-    // let userSelectPlanet
-    // // const planetIsChanging = useState(false)
-    // useEffect(() => {
-    //     if(planetIsChanging){
-    //         setTimeout(() => {
-                
-    //         }, 500);
-    //     }
-    // }, [planetIsChanging])
 
     const startPlanetChangingAnimation = (planetName) => {
-        setPlanetIsChanging(true)
-        setTimeout(() => {
-            dispatch(selectPlanet(planetName))
-
-        }, 500);
-        setTimeout(() => {
-            setPlanetIsChanging(false)
-            
-        }, 1000);
+        if(planetName !== selectedPlanet.name){
+            setPlanetIsChanging(true)
+            setTimeout(() => {
+                dispatch(selectPlanet(planetName))
+    
+            }, 500);
+            setTimeout(() => {
+                setPlanetIsChanging(false)
+                
+            }, 1000);
+        }
     }
 
 
     return(
-        <main>
+        <main className="main-destination">
+            
             {/* INSTRUCTION */}
             <span className="instructions">
                 <span className="step">01</span>

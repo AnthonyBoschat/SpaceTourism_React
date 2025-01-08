@@ -1,0 +1,101 @@
+@use "../../Physics/Sass/constants.scss" as v;
+
+
+
+main.main-crew{
+    font-family: "Barlow Condensed";
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+span.instructions{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    span{
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2.7px;
+        color: v.$lighter;
+    }
+
+    .step{
+        opacity: 0.24;
+    }
+}
+
+picture{
+    /* outline: 1px solid red; */
+    position: relative;
+    display: flex;
+
+    img{
+        transition: all 0.3s;
+        position: relative;
+    }
+}
+
+.crew-name, .crew-role, .crew-presentation{
+    transition: opacity 0.3s;
+}
+
+section.crew-description{
+    /* outline: 1px solid red; // */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+
+    ul.crew-carousel{
+        /* outline: 1px solid red; */
+        display: flex;
+        gap: 1rem;
+
+        li {
+            border-radius: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: v.$lighter;
+            opacity: 0.17;
+
+            &.selected{
+                opacity: 1;
+            }
+        }
+    }
+
+    div.crew-role-name-layout{
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-transform: uppercase;
+        gap: 8px;
+        font-family: "Bellefair";
+        font-weight: 300;
+        color: v.$lighter;
+        .crew-role{
+            font-size: 16px;
+            opacity: 0.5;
+        }
+        .crew-name{
+            font-size: 24px;
+        }
+    }
+
+    div.crew-presentation-layout{
+        p.crew-presentation{
+            font-family: "Barlow";
+            font-size: 15px;
+            text-align: center;
+            line-height: 25px;
+            font-weight: 400;
+            color: v.$light;
+        }
+    }
+}

@@ -25,4 +25,15 @@ div.content{
         padding-bottom: 3rem;
         overflow: hidden;
     }
+
+    &.crew{
+        width: 100vw;
+        height: 100vh;
+        background-image: url("@Assets/Background/crew.png");
+        background-size: cover;
+        display: grid;
+        grid-template-columns: 100vw;
+        grid-template-rows: 6rem 1fr;
+        overflow: hidden;
+    }
 }

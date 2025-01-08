@@ -49,7 +49,6 @@ export const destinationSlice = createSlice({
   },
   reducers: {
     selectPlanet:(state,action) => {
-
         state.selectedPlanet = state.planets.find(planet => planet.name === action.payload)
     }
   },
