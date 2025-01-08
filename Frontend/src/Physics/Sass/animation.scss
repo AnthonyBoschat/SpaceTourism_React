@@ -42,9 +42,7 @@
     animation: phone-navigation-apparition 0.3s ease-in-out forwards;
 }
 @keyframes phone-navigation-disparition{
-    from{
-        transform: translateX(0rem);
-    }to{
+    to{
         transform: translateX(15.875rem);
     }
 }

@@ -3,6 +3,7 @@ import "./Home.scss"
 export default function Home(){
 
 
+
     return(
         <main>
 
@@ -18,7 +19,7 @@ export default function Home(){
             </div>
 
             <div className="explore">
-                <a href="">
+                <a href="/destination">
                     <span>
                         Explore
                     </span>

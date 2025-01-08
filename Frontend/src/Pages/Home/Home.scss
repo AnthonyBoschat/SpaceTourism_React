@@ -1,16 +1,6 @@
 @use "../../Physics/Sass/constants.scss" as v;
 
 
-#root{
-    width: 100vw;
-    height: 100%;
-    background-image: url("../../Physics/Assets/Background/home.jpg");
-    background-size: cover;
-    display: grid;
-    grid-template-columns: 100vw;
-    grid-template-rows: 6rem 1fr;
-}
-
 main{
     padding-top: 2rem;
     width: 100%;

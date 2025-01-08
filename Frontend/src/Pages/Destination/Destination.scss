@@ -1,0 +1,141 @@
+@use "../../Physics/Sass/constants.scss" as v;
+
+
+main{
+    font-family: "Barlow Condensed";
+
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // INSTRUCTION
+    span.instructions{
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+    
+        span{
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2.7px;
+            color: v.$lighter;
+        }
+    
+        .step{
+            opacity: 0.24;
+        }
+    }
+
+    // PLANET
+    div.destination-planet-image{
+        position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+        box-shadow: -1px -1px 0.5px rgba(0, 0, 0, 0.7) inset;
+    
+        div.mask{
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            left: -25%;
+            top: -25%;
+            z-index: 2;
+            background: url("@Assets/Background/Oval.png");
+            background-repeat: no-repeat;
+        }
+    }
+
+    // PLANET LIST
+    div.destination-planet-list{
+        display: flex;
+        align-items: center;
+        gap: 26px;
+        font-family: "Barlow Condensed";
+    
+    
+        a{
+            text-decoration: none;
+            position: relative;
+            background: none;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 2.36px;
+            font-size: 0.875rem;
+            color: v.$light;;
+            padding: 0;
+        }
+    
+        a:hover{
+            cursor: pointer;
+            color: v.$lighter;
+        }
+    
+        a.selected{
+            color: v.$lighter;
+        }
+        a.selected::after{
+            position: absolute;
+            content: "";
+            left: 0;
+            bottom: -0.5rem;
+            width: 100%;
+            height: 2px;
+            background-color: white;
+        }
+    }
+    
+
+    // PLANET NAME
+    div.destination-planet-name-description{
+        text-align: center;
+    
+        h1.destination-planet-name{
+            font-size: 3.5rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: v.$lighter;
+            font-family: "Bellefair";
+        }
+    
+        p.destination-planet-description{
+            color: v.$light;
+            line-height: 25px;
+            text-align: center;
+            font-family: "Barlow";
+        }
+    }
+
+    // SEPARATOR
+    div.destination-separator{
+        width: 100%;
+        height: 1px;
+        background-color: v.$separator;
+    }
+
+    // PLANET INFORMATIONS
+    div.destination-planet-informations{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-transform: uppercase;
+        gap: .875rem;
+    
+        span.information{
+            text-align: center;
+            font-size: 0.875rem;
+            color: v.$light;
+            letter-spacing: 2.36px;
+        }
+        
+        span.value{
+            text-align: center;
+            font-size: 1.75rem;
+            color: v.$lighter;
+            font-family: "Bellefair";
+        }
+    }
+    
+}
