@@ -1,12 +1,37 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import "./Destination.scss"
+import { useEffect, useRef, useState } from "react"
+import { selectPlanet } from "@Physics/Redux/Slices/destinationSlice"
 
 export default function Destination(){
 
-   
-
+    const dispatch = useDispatch()
+    const maskRef = useRef()
     const planets = useSelector(store => store.destination.planets)
     const selectedPlanet = useSelector(store => store.destination.selectedPlanet)
+
+    const [planetIsChanging, setPlanetIsChanging] = useState(false)
+    // let userSelectPlanet
+    // // const planetIsChanging = useState(false)
+    // useEffect(() => {
+    //     if(planetIsChanging){
+    //         setTimeout(() => {
+                
+    //         }, 500);
+    //     }
+    // }, [planetIsChanging])
+
+    const startPlanetChangingAnimation = (planetName) => {
+        setPlanetIsChanging(true)
+        setTimeout(() => {
+            dispatch(selectPlanet(planetName))
+
+        }, 500);
+        setTimeout(() => {
+            setPlanetIsChanging(false)
+            
+        }, 1000);
+    }
 
 
     return(
@@ -22,21 +47,22 @@ export default function Destination(){
                 <picture>
                     <img className="planet-image" src={selectedPlanet.image} alt=""/>
                 </picture>
-                <div className="mask"></div>
+                <div ref={maskRef} className={`mask ${planetIsChanging ? "animationClass_mask-planet-hide-planet" : ""}`}></div>
             </div>
 
             {/* PLANET LIST */}
              <div className="destination-planet-list">
                 {planets.map((planet, index) => (
-                    <a key={index} className={planet.selected ? "selected" : "unselected"}>{planet.name}</a>
+                    // <a onClick={() => dispatch(selectPlanet(planet.name))} key={index} className={planet === selectedPlanet ? "selected" : "unselected"}>{planet.name}</a>
+                    <a onClick={() => startPlanetChangingAnimation(planet.name)} key={index} className={`${planet.name === selectedPlanet.name ? "selected" : "unselected"} ${planetIsChanging ? "animationClass_make-disabled" : ""}`}>{planet.name}</a>
                 ))}
              </div>
 
              {/* PLANET NAME */}
               <div className="destination-planet-name-description">
-                  <h1 className="destination-planet-name">{selectedPlanet.name}</h1>
+                  <h1 className={`destination-planet-name ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedPlanet.name}</h1>
                   {/* PLANET DESCRIPTION */}
-                  <p className="destination-planet-description">{selectedPlanet.description}</p>
+                  <p className={`destination-planet-description ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedPlanet.description}</p>
               </div>
 
 
@@ -46,11 +72,11 @@ export default function Destination(){
               {/* PLANET INFORMATIONS */}
                 <div className="destination-planet-informations">
                     <span className="information">Avg. Distance</span>
-                    <span className="value distance">{selectedPlanet.distance}</span>
+                    <span className={`value distance ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedPlanet.distance}</span>
                 </div>
                 <div className="destination-planet-informations">
                     <span className="information">Est. Travel Time</span>
-                    <span className="value travelTime">{selectedPlanet.travelTime}</span>
+                    <span className={`value travelTime ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedPlanet.travelTime}</span>
                 </div>
          </main>
     )
