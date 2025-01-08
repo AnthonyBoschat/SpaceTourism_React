@@ -36,4 +36,15 @@ div.content{
         grid-template-rows: 6rem 1fr;
         overflow: hidden;
     }
+
+    &.technology{
+        width: 100vw;
+        height: 100vh;
+        background-image: url("@Assets/Background/technologie.jpg");
+        background-size: cover;
+        display: grid;
+        grid-template-columns: 100vw;
+        grid-template-rows: 6rem 1fr;
+        overflow: hidden;
+    }
 }

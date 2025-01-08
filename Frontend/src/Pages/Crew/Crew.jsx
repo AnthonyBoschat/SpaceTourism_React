@@ -47,6 +47,7 @@ export default function Crew(){
                 <ul className="crew-carousel">
                     {crewMembers.map(member => (
                         <li 
+                            key={member.name}
                             onClick={() => startCrewMemberChangingAnimation(member.name)}
                             className={`${member.name === selectedCrewMember.name ? "selected" : "unselected"} ${crewMemberIsChanging ? "animationClass_make-disabled" : ""}`}></li>
                     ))}

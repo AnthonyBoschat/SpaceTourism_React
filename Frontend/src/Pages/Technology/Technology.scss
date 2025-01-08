@@ -1,0 +1,95 @@
+@use "../../Physics/Sass/constants.scss" as v;
+
+
+main{
+    font-family: "Barlow Condensed";
+    // padding-left: 1.5rem;
+    // padding-right: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-right: 0;
+    margin-left: 0;
+}
+
+span.instructions{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    span{
+        font-size: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2.7px;
+        color: v.$lighter;
+    }
+
+    .step{
+        opacity: 0.24;
+    }
+}
+
+
+
+
+section.techno-carousel{
+    font-family: v.$bellefair;
+    font-size: 16px;
+    /* outline: 1px solid white; */
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    button{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        outline: 1px solid hsla(0, 0%, 100%, 0.25);
+        color: v.$lighter;
+
+        &.selected{
+            background-color: v.$lighter;
+            color:#0B0D17;
+        }
+    }
+}
+
+section.description{
+    margin-left: 24px;
+    margin-right: 24px;
+    display: flex;
+    /* justify-content: center; */
+    flex-direction: column;
+    align-items: center;
+    color: v.$light;
+
+    .terminology{
+        letter-spacing: 2.36px;
+        text-transform: uppercase;
+        font-family: "Barlow Condensed";
+        font-size: 14px;
+    }
+
+    .techno-name{
+        color:v.$lighter;
+        text-transform: uppercase;
+        font-size: 24px;
+        font-weight: 500;
+        font-family: "Bellefair";
+    }
+
+    .techno-description{
+        margin-top: 1rem;
+        text-align: center;
+        font-family: "Barlow";
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 25px;
+    }
+}
