@@ -17,8 +17,7 @@ export const destinationSlice = createSlice({
     },
     setPlanets:(state,action) => {
         state.planets = action.payload
-        const moon = action.payload.find(destination => destination.name === "moon")
-        state.selectedPlanet = moon
+        state.selectedPlanet = action.payload[0]
     }
   },
 });

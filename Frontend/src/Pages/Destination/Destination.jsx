@@ -24,16 +24,25 @@ export default function Destination(){
         loadDestinations()
     }, [])
 
+    // Sert à précharger les images
+    useEffect(() => {
+        if (!loading) {
+          planets.forEach(({ image }) => {
+            const img = new Image();
+            img.src = image;
+          });
+        }
+      }, [loading, planets]);
+
     const startPlanetChangingAnimation = (planetName) => {
         if(planetName !== selectedPlanet.name){
             setPlanetIsChanging(true)
             setTimeout(() => {
                 dispatch(selectPlanet(planetName))
     
-            }, 500);
+            }, 400);
             setTimeout(() => {
                 setPlanetIsChanging(false)
-                
             }, 1000);
         }
     }
