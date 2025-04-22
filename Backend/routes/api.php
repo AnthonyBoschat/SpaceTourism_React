@@ -13,3 +13,8 @@ Route::get("/crews/index", [CrewController::class, "index"]);
 Route::get("/technology/index", [TechnologyController::class, "index"]);
 
 
+Route::post("/crews/admin/update", [CrewController::class, "update"]);
+Route::post("/destinations/admin/update", [DestinationController::class, "update"]);
+Route::post("/technology/admin/update", [TechnologyController::class, "update"]);
+
+

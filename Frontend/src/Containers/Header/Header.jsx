@@ -11,6 +11,7 @@ export default function Header(){
         {href:"/destination", label:"Destination"},
         {href:"/crew", label:"Crew"},
         {href:"/technology", label:"Technology"},
+        // {href:"/administration", label:"Administration"},
     ]
     const navigationContainerRef = useRef()
     const [menuClosed, setMenuClosed] = useState(true)

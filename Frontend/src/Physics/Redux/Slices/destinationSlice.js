@@ -18,12 +18,18 @@ export const destinationSlice = createSlice({
     setPlanets:(state,action) => {
         state.planets = action.payload
         state.selectedPlanet = action.payload[0]
+    },
+    setPlanet:(state,action) => {
+      const index = state.planets.findIndex(planet => planet.id === action.payload.id)
+      if (index !== -1) {
+        state.planets[index] = action.payload
+      }
     }
   },
 });
 
 export const { 
-    selectPlanet, setPlanets
+    selectPlanet, setPlanets,setPlanet
 } = destinationSlice.actions;
 
 export const destinationSliceReducer = destinationSlice.reducer;

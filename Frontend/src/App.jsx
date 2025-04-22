@@ -2,10 +2,8 @@ import Header from "@Containers/Header/Header";
 import "./App.scss"
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Home_Page from "@Pages/Home";
-import Destination_Page from "@Pages/Destination";
-import Crew_Page from "@Pages/Crew";
-import Technology_Page from "@Pages/Technology";
+import ROUTES from "@Physics/Constants/routes.jsx";
+import { Flip, ToastContainer } from "react-toastify";
 
 
 
@@ -24,13 +22,30 @@ export default function App() {
   
   return (
     <div className={`content ${contentClass}`}>
-      <Header/>
+      {!location.pathname.startsWith("/administration") && (
+        <Header/>
+      )}
       <Routes>
-        <Route path="/" element={<Home_Page/>}/>
-        <Route path="/destination" element={<Destination_Page/>}/>
-        <Route path="/crew" element={<Crew_Page/>}/>
-        <Route path="/technology" element={<Technology_Page/>}/>
+        <Route path={ROUTES.HOME.path} element={ROUTES.HOME.element}/>
+        <Route path={ROUTES.DESTINATION.path} element={ROUTES.DESTINATION.element}/>
+        <Route path={ROUTES.CREW.path} element={ROUTES.CREW.element}/>
+        <Route path={ROUTES.TECHNOLOGY.path} element={ROUTES.TECHNOLOGY.element}/>
+        <Route path={ROUTES.ADMINISTRATION.path} element={ROUTES.ADMINISTRATION.element}/>
       </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        limit={2}
+        theme="light"
+        transition={Flip}
+        />
     </div>
   )
 }

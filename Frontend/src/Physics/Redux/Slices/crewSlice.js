@@ -1,8 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import douglasImg from "@Assets/Crew/douglasHurley.png"
-import markImg from "@Assets/Crew/markShuttleworth.png"
-import victorImg from "@Assets/Crew/victorGlover.png"
-import anoushehImg from "@Assets/Crew/anoushehAnsari.png"
 
 export const crewSlice = createSlice({
   name: 'crew',
@@ -17,12 +13,18 @@ export const crewSlice = createSlice({
     setCrews:(state,action) => {
         state.crewMembers = action.payload
         state.selectedCrewMember = action.payload[0]
+    },
+    setMemberCrew:(state,action) => {
+      const index = state.crewMembers.findIndex(member => member.id === action.payload.id)
+      if (index !== -1) {
+        state.crewMembers[index] = action.payload
+      }
     }
   },
 });
 
 export const { 
-    selectCrewMember, setCrews
+    selectCrewMember, setCrews, setMemberCrew
 } = crewSlice.actions;
 
 export const crewSliceReducer = crewSlice.reducer;

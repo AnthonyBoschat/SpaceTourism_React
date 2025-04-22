@@ -13,4 +13,20 @@ class CrewController extends Controller
         $crews = Crew::all();
         return $crews;
     }
+
+    public function update(Request $request){
+        $validated = $request->validate([
+            'id'           => 'required|integer|exists:crews,id',
+            'name'         => 'required|string|max:255',
+            'role'         => 'required|string|max:255',
+            'presentation' => 'nullable|string',
+        ]);
+        $crewMember = Crew::findOrFail($validated['id']);
+        $crewMember->update([
+            'name'         => $validated['name'],
+            'role'         => $validated['role'],
+            'presentation' => $validated['presentation'],
+        ]);
+        return response()->json($crewMember, 200);
+    }
 }

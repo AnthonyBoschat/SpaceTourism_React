@@ -16,12 +16,18 @@ export const technologySlice = createSlice({
     setTechnology:(state, action) => {
         state.technology = action.payload
         state.selectedTechnology = action.payload[0]
+    },
+    setTechno:(state,action) => {
+      const index = state.technology.findIndex(techno => techno.id === action.payload.id)
+      if (index !== -1) {
+        state.technology[index] = action.payload
+      }
     }
   },
 });
 
 export const { 
-    selectTechnology, setTechnology
+    selectTechnology, setTechnology,setTechno
 } = technologySlice.actions;
 
 export const technologySliceReducer = technologySlice.reducer;
