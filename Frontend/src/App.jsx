@@ -1,11 +1,11 @@
 import Header from "@Containers/Header/Header";
 import "./App.scss"
 import { Route, Routes, useLocation } from "react-router-dom";
-import Home from "@Pages/Home/Home";
-import Destination from "@Pages/Destination/Destination";
 import { useEffect, useState } from "react";
-import Crew from "@Pages/Crew/Crew";
-import Technology from "@Pages/Technology/Technology";
+import Home_Page from "@Pages/Home";
+import Destination_Page from "@Pages/Destination";
+import Crew_Page from "@Pages/Crew";
+import Technology_Page from "@Pages/Technology";
 
 
 
@@ -26,10 +26,10 @@ export default function App() {
     <div className={`content ${contentClass}`}>
       <Header/>
       <Routes>
-        <Route path="/" element={<Home/>}/>
-        <Route path="/destination" element={<Destination/>}/>
-        <Route path="/crew" element={<Crew/>}/>
-        <Route path="/technology" element={<Technology/>}/>
+        <Route path="/" element={<Home_Page/>}/>
+        <Route path="/destination" element={<Destination_Page/>}/>
+        <Route path="/crew" element={<Crew_Page/>}/>
+        <Route path="/technology" element={<Technology_Page/>}/>
       </Routes>
     </div>
   )

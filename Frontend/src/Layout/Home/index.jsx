@@ -1,6 +1,6 @@
-import "./Home.scss"
+import "./style.scss"
 
-export default function Home(){
+export default function Home_Layout(){
 
 
 
