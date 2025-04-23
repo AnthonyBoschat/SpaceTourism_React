@@ -26,6 +26,7 @@ export default function Administration_Layout(){
 
     const tables = {
         crews: {
+            datasource:crewMembers,
             fields:[
                 {label:"name", type:"input"},
                 {label:"role", type:"input"},
@@ -35,7 +36,6 @@ export default function Administration_Layout(){
                 UPDATE : ENDPOINTS.CREWS.UPDATE,
                 DELETE : ENDPOINTS.CREWS.DELETE,
             },
-            datasource:crewMembers,
             callback:{
                 UPDATE:(response) => {
                     dispatch(setMemberCrew(response))
@@ -48,6 +48,7 @@ export default function Administration_Layout(){
             }
         },
         destinations:{
+            datasource:destinations,
             fields:[
                 {label:"name", type:"input"},
                 {label:"description", type:"textarea"},
@@ -58,7 +59,6 @@ export default function Administration_Layout(){
                 UPDATE : ENDPOINTS.DESTINATIONS.UPDATE,
                 DELETE : ENDPOINTS.DESTINATIONS.DELETE,
             },
-            datasource:destinations,
             callback:{
                 UPDATE:(response) => {
                     dispatch(setDestination(response))
@@ -71,6 +71,7 @@ export default function Administration_Layout(){
             }
         },
         technology:{
+            datasource:technology,
             fields:[
                 {label:"name", type:"input"},
                 {label:"presentation", type:"textarea"},
@@ -79,7 +80,6 @@ export default function Administration_Layout(){
                 UPDATE : ENDPOINTS.TECHNOLOGY.UPDATE,
                 DELETE : ENDPOINTS.TECHNOLOGY.DELETE,
             },
-            datasource:technology,
             callback:{
                 UPDATE:(response) => {
                     dispatch(setTechno(response))
