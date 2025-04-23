@@ -1,23 +1,29 @@
 export default async function callBackend(endpoint, method="GET", payload=null){
     if(!endpoint) return null
     if(method === "GET" && payload) return null
-    if(method === "POST" && !payload) return null
+    if (["POST","PUT","PATCH","DELETE"].includes(method) && !payload) return null;
     
-    if(method === "GET"){
-        const response = await fetch(endpoint)
-        if(!response.ok) return null
-        const data = await response.json()
-        return data
-    }else{
-        const response = await fetch(endpoint, {
-            method: method,
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        })
-        if(!response.ok) return null
-        const data = await response.json()
-        return data
-    }
+    const config = {
+        method,
+        headers: {
+          'Accept': 'application/json',
+          // X-CSRF-TOKEN si tu utilises le middleware web de Laravel
+          // 'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
+        },
+      };
+    
+      if (payload) {
+        if (payload instanceof FormData) {
+          // on ne touche pas aux headers, le navigateur s'occupe de Content-Type + boundary
+          config.body = payload;
+        } else {
+          // JSON classique
+          config.headers['Content-Type'] = 'application/json';
+          config.body = JSON.stringify(payload);
+        }
+      }
+    
+      const response = await fetch(endpoint, config);
+      if (!response.ok) return null;
+      return response.json();
 }

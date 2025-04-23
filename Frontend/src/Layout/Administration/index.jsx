@@ -24,11 +24,15 @@ export default function Administration_Layout(){
     const tabs = useSelector(store => store.administration.tabs)
     const dispatch = useDispatch()
 
+    
+    // Détermine quel onglet est actif
     useEffect(() => {
         const activeTab = tabs.find(tab => tab.active)
         setActiveComponent(COMPONENTS[activeTab.key])
     }, [tabs])
 
+
+    // Récupère les données du backend
     const loadData = async() => {
         const crew = await callBackend(ENDPOINTS.CREWS.GET_ALL)
         dispatch(setCrews(crew))
@@ -38,7 +42,6 @@ export default function Administration_Layout(){
         dispatch(setTechnology(technology))
         setLoading(false)
     }
-
     useEffect(() => {
         if(loading){
             loadData()

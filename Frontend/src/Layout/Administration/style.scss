@@ -30,8 +30,9 @@
             height: 95%;
             display: grid;
             grid-template-columns: 1fr;
-            grid-template-rows: 5% 95%;
+            grid-template-rows: 5% minmax(0, 1fr);
             position: relative;
+
 
             .loading{
                 position: absolute;
@@ -58,62 +59,163 @@
 
 
 
-            #administration-table{
-    
-                border-collapse: collapse;
-                font-family: monospace;
-                table-layout: fixed;
-                // outline: 1px solid black;
-                border-radius: 8px;
-                thead{
-                    background-color: rgba(0, 0, 0, 0.356);
-                    color: white;
-                    font-size: 1rem;
-                    box-shadow: 0px 4px 4px -2px black;
-            
-                }
-                tbody{
-                    background-color: rgba(255, 255, 255, 0.5);
-                }
-                th, td{
-                    border-bottom: 1px solid grey;
-                    text-align: center
-                }
-                td{
-                    padding-left: 0.5rem;
-                    padding-right: 0.5rem;
-                    border-right: 1px solid grey;
-                }
-                tr{
-                    height: 5rem;
-                }
-                .actions{
-                    padding-left: 2rem;
-                    padding-right: 2rem;
-                    background-color: rgb(1, 80, 92);
-                    color: white;
-                    width: 10rem;
-            
-                    button{
-                        // background-color: white;
-                        &:hover{
-                            text-decoration: underline;
-                            cursor: pointer;
+            #administration-element-list{
+                all:unset;
+
+                padding: 5rem;
+                display: grid;
+                box-sizing: border-box;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2rem;
+                height: 100%;
+                overflow: auto;
+                // outline: 1px solid red;
+                font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                li{
+                    all:unset;
+                    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+                    background-color: rgba(255, 255, 255, 0);
+                    padding: 2rem;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                    transition: all 0.15s linear;
+                    position: relative;
+
+                    .loader{
+                        opacity: 0;
+                        // pointer-events: none;
+                        &.sending{
+                            z-index: 2;
+                            opacity: 1;
                         }
-            
-                        &.save{
-                            color: rgb(202, 255, 202);
+                        display: flex;
+                        transition: opacity 0.2s linear;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        justify-content: center;
+                        align-items: center;
+                        background-color: rgba(0, 0, 0, 0.701);
+                        top: 0;
+                        left: 0;
+                        z-index: -1;
+                        transform: translate(-50% -50%);
+                        i{
+                            color: white;
                         }
-                        &.cancel{
-                            color: rgb(255, 187, 187);
+                    }
+
+                    &:hover{
+                        background-color: rgba(255, 255, 255, 0.1);
+                        box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.6);
+                    }
+                    &.active{
+                        background-color: rgba(255, 255, 255, 0.1);
+                        box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.6);
+                    }
+
+                    picture{
+                        display: flex;
+                        justify-content: center;
+                        img{
+                            height: 15rem;
+                            width: auto;
+                        }
+                    }
+
+                    .updated_at{
+                        font-size: 0.8rem;
+                        text-align: right;
+                        opacity: 0.7;
+                        margin-bottom: 2rem;
+                        .time{
+                            font-weight: 700;
+                        }
+                    }
+
+                    .fields{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                        .field{
+                            display: flex;
+                            flex-direction: column;
+                            gap: 0.5rem;
+
+                            input, textarea{
+                                all:unset;
+                                padding: 0.5rem;
+                                border-radius: 4px;
+                                transition: all 0.15s linear;
+                            }
+
+                            input{
+                                width: 50%;
+                            }
+                            textarea{
+                                height: 10rem;
+                            }
+                        }
+                    }
+
+                    .actions{
+                        display: flex;
+                        gap: 1rem;
+
+                        .action{
+                            width: fit-content;
+                            // outline: 1px solid red;
+                            padding-left: 3rem;
+                            padding-right: 3rem;
+                            padding-top: 0.5rem;
+                            padding-bottom: 0.5rem;
+                            border-radius: 4px;
+                            transition: all 0.15s linear;
+                            
+                            &:hover{
+                                cursor: pointer;
+                                opacity: 1;
+                            }
+                            &.update, &.validate{
+                                background-color: rgb(27, 40, 52);
+                                color: white;
+                                &:hover{
+                                    outline: 1px solid rgb(27, 40, 52);
+                                    color: rgb(27, 40, 52);
+                                    background-color: white;
+                                }
+                            }
+                            &.cancel{
+                                background-color: rgb(179, 0, 0);
+                                color: white;
+
+                                &:hover{
+                                    outline: 1px solid rgb(179, 0, 0);
+                                    color: rgb(179, 0, 0);
+                                    background-color: white;
+                                }
+                            }
                         }
                     }
                 }
-                .updating{
-                    background-color: rgba(1, 80, 92, 0.7);
-                    color: white;
+
+
+
+
+
+
+
+
+
+                .read-only{
+                    background-color: rgba(255, 255, 255, 0.5) !important;
+                    pointer-events: none !important;
                 }
-            
+                .updating{
+                    background-color: white !important;
+                }
+
             }
         }
     }
