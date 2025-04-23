@@ -39,4 +39,14 @@ class CrewController extends Controller
         
         return response()->json($crewMember, 200);
     }
+
+    public function delete(Request $request){
+        $validated = $request->validate([
+            "id" => "required|integer|exists:crews,id",
+        ]);
+        $crewMember = Crew::findOrFail($validated['id']);
+        $crewMember->delete();
+
+        return response()->json($validated['id']);
+    }
 }

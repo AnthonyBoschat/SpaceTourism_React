@@ -25,7 +25,7 @@
         align-items: center;
 
         .content{
-            outline: 1px solid white;
+            // outline: 1px solid white;
             width: 98%;
             height: 95%;
             display: grid;
@@ -61,15 +61,13 @@
 
             #administration-element-list{
                 all:unset;
-
                 padding: 5rem;
                 display: grid;
                 box-sizing: border-box;
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(5, 1fr);
                 gap: 2rem;
                 height: 100%;
                 overflow: auto;
-                // outline: 1px solid red;
                 font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
                 li{
                     all:unset;
@@ -118,9 +116,14 @@
                     picture{
                         display: flex;
                         justify-content: center;
+                        // outline: 1px solid red;
+                        overflow: hidden; 
+                        width: 100%;
+                        height: 15rem;
                         img{
-                            height: 15rem;
-                            width: auto;
+                            object-fit: contain;
+                            width: 100%;
+                            height: 100%;
                         }
                     }
 
@@ -148,6 +151,7 @@
                                 padding: 0.5rem;
                                 border-radius: 4px;
                                 transition: all 0.15s linear;
+                                font-size: 0.8rem;
                             }
 
                             input{
@@ -164,10 +168,12 @@
                         gap: 1rem;
 
                         .action{
+                            font-size: 0.7rem;
                             width: fit-content;
-                            // outline: 1px solid red;
-                            padding-left: 3rem;
-                            padding-right: 3rem;
+                            width: 6rem;
+                            text-align: center;
+                            width: 6rem;
+                            text-align: center;
                             padding-top: 0.5rem;
                             padding-bottom: 0.5rem;
                             border-radius: 4px;
@@ -186,7 +192,7 @@
                                     background-color: white;
                                 }
                             }
-                            &.cancel{
+                            &.cancel, &.delete{
                                 background-color: rgb(179, 0, 0);
                                 color: white;
 

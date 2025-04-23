@@ -39,4 +39,14 @@ class DestinationController extends Controller
         ]);
         return response()->json($destination, 200);
     }
+
+    public function delete(Request $request){
+        $validated = $request->validate([
+            "id" => "required|integer|exists:crews,id",
+        ]);
+        $destination = Destination::findOrFail($validated['id']);
+        $destination->delete();
+
+        return response()->json($validated['id']);
+    }
 }

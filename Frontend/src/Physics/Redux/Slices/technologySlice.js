@@ -22,12 +22,15 @@ export const technologySlice = createSlice({
       if (index !== -1) {
         state.technology[index] = action.payload
       }
+    },
+    deleteTechno:(state, action) => {
+      state.technology = state.technology.filter(techno => techno.id !== action.payload)
     }
   },
 });
 
 export const { 
-    selectTechnology, setTechnology,setTechno
+    selectTechnology, setTechnology,setTechno, deleteTechno
 } = technologySlice.actions;
 
 export const technologySliceReducer = technologySlice.reducer;

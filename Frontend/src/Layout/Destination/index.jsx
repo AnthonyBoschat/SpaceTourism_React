@@ -1,37 +1,37 @@
 import { useDispatch, useSelector } from "react-redux"
 import "./style.scss"
 import { useEffect, useRef, useState } from "react"
-import { selectPlanet, setPlanets } from "@Physics/Redux/Slices/destinationSlice"
-import ENDPOINTS from "@Physics/Constants/endpoints"
+import { selectDestination } from "@Physics/Redux/Slices/destinationSlice"
 
 export default function Destination_Layout(){
 
     const dispatch = useDispatch()
-    const [planetIsChanging, setPlanetIsChanging] = useState(false)
+    const [planetIsChanging, setDestinationIsChanging] = useState(false)
     const maskRef = useRef()
-    const planets = useSelector(store => store.destination.planets)
-    const selectedPlanet = useSelector(store => store.destination.selectedPlanet)
+    const destinations = useSelector(store => store.destination.destinations)
+    const selectedDestination = useSelector(store => store.destination.selectedDestination)
 
 
     // Sert à précharger les images
     useEffect(() => {
-        if (planets) {
-          planets.forEach(({ image }) => {
+        if (destinations) {
+          destinations.forEach(({ image }) => {
             const img = new Image();
             img.src = image;
           });
         }
-      }, [planets]);
+      }, [destinations]);
+
 
     const startPlanetChangingAnimation = (planetName) => {
-        if(planetName !== selectedPlanet.name){
-            setPlanetIsChanging(true)
+        if(planetName !== selectedDestination.name){
+            setDestinationIsChanging(true)
             setTimeout(() => {
-                dispatch(selectPlanet(planetName))
+                dispatch(selectDestination(planetName))
     
             }, 400);
             setTimeout(() => {
-                setPlanetIsChanging(false)
+                setDestinationIsChanging(false)
             }, 1000);
         }
     }
@@ -51,24 +51,23 @@ export default function Destination_Layout(){
             {/* PLANET */}
             <div className="destination-planet-image">
                 <picture>
-                    <img className="planet-image" src={selectedPlanet.image} alt=""/>
+                    <img className="planet-image" src={selectedDestination.image_url} alt=""/>
                 </picture>
                 <div ref={maskRef} className={`mask ${planetIsChanging ? "animationClass_mask-planet-hide-planet" : ""}`}></div>
             </div>
 
             {/* PLANET LIST */}
                 <div className="destination-planet-list">
-                {planets.map((planet, index) => (
-                    // <a onClick={() => dispatch(selectPlanet(planet.name))} key={index} className={planet === selectedPlanet ? "selected" : "unselected"}>{planet.name}</a>
-                    <a onClick={() => startPlanetChangingAnimation(planet.name)} key={index} className={`${planet.name === selectedPlanet.name ? "selected" : "unselected"} ${planetIsChanging ? "animationClass_make-disabled" : ""}`}>{planet.name}</a>
+                {destinations?.map((destination, index) => (
+                    <a onClick={() => startPlanetChangingAnimation(destination.name)} key={index} className={`${destination.name === selectedDestination.name ? "selected" : "unselected"} ${planetIsChanging ? "animationClass_make-disabled" : ""}`}>{destination.name}</a>
                 ))}
                 </div>
 
                 {/* PLANET NAME */}
                 <div className="destination-planet-name-description">
-                    <h1 className={`destination-planet-name ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedPlanet.name}</h1>
+                    <h1 className={`destination-planet-name ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedDestination.name}</h1>
                     {/* PLANET DESCRIPTION */}
-                    <p className={`destination-planet-description ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedPlanet.description}</p>
+                    <p className={`destination-planet-description ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedDestination.description}</p>
                 </div>
 
 
@@ -78,11 +77,11 @@ export default function Destination_Layout(){
                 {/* PLANET INFORMATIONS */}
                 <div className="destination-planet-informations">
                     <span className="information">Avg. Distance</span>
-                    <span className={`value distance ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedPlanet.distance}</span>
+                    <span className={`value distance ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedDestination.distance}</span>
                 </div>
                 <div className="destination-planet-informations">
                     <span className="information">Est. Travel Time</span>
-                    <span className={`value travelTime ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedPlanet.travelTime}</span>
+                    <span className={`value travelTime ${planetIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>{selectedDestination.travelTime}</span>
                 </div>
             </main>
     )

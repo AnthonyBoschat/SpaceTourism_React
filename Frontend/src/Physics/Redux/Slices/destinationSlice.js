@@ -1,35 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
-import moon from "@Assets/Image/moon.png"
-import mars from "@Assets/Image/mars.png"
-import europa from "@Assets/Image/europa.png"
-import titan from "@Assets/Image/titan.png"
 
 
 export const destinationSlice = createSlice({
   name: 'destination',
   initialState: {
-    planets:null,
-    selectedPlanet:null,
+    destinations:null,
+    selectedDestination:null,
   },
   reducers: {
-    selectPlanet:(state,action) => {
-        state.selectedPlanet = state.planets.find(planet => planet.name === action.payload)
+    selectDestination:(state,action) => {
+        state.selectedDestination = state.destinations.find(destination => destination.name === action.payload)
     },
-    setPlanets:(state,action) => {
-        state.planets = action.payload
-        state.selectedPlanet = action.payload[0]
+    setDestinations:(state,action) => {
+        state.destinations = action.payload
+        state.selectedDestination = action.payload[0]
     },
-    setPlanet:(state,action) => {
-      const index = state.planets.findIndex(planet => planet.id === action.payload.id)
+    setDestination:(state,action) => {
+      const index = state.destinations.findIndex(destination => destination.id === action.payload.id)
       if (index !== -1) {
-        state.planets[index] = action.payload
+        state.destinations[index] = action.payload
       }
+    },
+    deleteDestination:(state, action) => {
+      state.destinations = state.destinations.filter(destination => destination.id !== action.payload)
     }
   },
 });
 
 export const { 
-    selectPlanet, setPlanets,setPlanet
+    selectDestination, setDestinations,setDestination, deleteDestination
 } = destinationSlice.actions;
 
 export const destinationSliceReducer = destinationSlice.reducer;

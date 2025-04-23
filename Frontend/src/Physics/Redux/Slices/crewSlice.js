@@ -19,12 +19,15 @@ export const crewSlice = createSlice({
       if (index !== -1) {
         state.crewMembers[index] = action.payload
       }
+    },
+    deleteMemberCrew:(state, action) => {
+      state.crewMembers = state.crewMembers.filter(member => member.id !== action.payload)
     }
   },
 });
 
 export const { 
-    selectCrewMember, setCrews, setMemberCrew
+    selectCrewMember, setCrews, setMemberCrew, deleteMemberCrew
 } = crewSlice.actions;
 
 export const crewSliceReducer = crewSlice.reducer;
