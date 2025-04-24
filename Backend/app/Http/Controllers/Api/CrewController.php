@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Crew;
 use App\Services\Interfaces\imageServiceInterface;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class CrewController extends Controller
         $crews = Crew::all();
         return $crews;
     }
+
 
     public function update(Request $request){
         $validated = $request->validate([

@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             DestinationsSeeder::class,
             CrewsSeeder::class,
             TechnologySeeder::class,
+            UserSeeder::class,
         ]);
     }
 }

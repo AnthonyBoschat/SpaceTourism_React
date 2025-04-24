@@ -37,7 +37,7 @@ export default function Technology_Layout(){
             <section className="techno-photo">
                 <picture className={`${technologyIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>
                     {technology.map(techno => (
-                        <img key={techno.id} className={`photo`} style={techno !== selectedtechnology ? {display:"none"} : null} src={techno.image}></img>
+                        <img key={techno.id} className={`photo`} style={techno !== selectedtechnology ? {display:"none"} : null} src={techno.image_url}></img>
                     ))}
                 </picture>
             </section>

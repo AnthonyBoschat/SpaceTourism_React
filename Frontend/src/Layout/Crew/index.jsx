@@ -38,7 +38,7 @@ export default function Crew_Layout(){
             <section className="crew-photo">
                 <picture className={`${crewMemberIsChanging ? "animationClass_opacity-out-in-1000" : ""}`}>
                     {crewMembers.map(member => (
-                        <img key={member.id} className={`photo`} style={member !== selectedCrewMember ? {display:"none"} : null} src={member.image}></img>
+                        <img key={member.id} className={`photo`} style={member !== selectedCrewMember ? {display:"none"} : null} src={member.image_url}></img>
                     ))}
                 </picture>
             </section>

@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\CrewController;
-use App\Http\Controllers\DestinationController;
-use App\Http\Controllers\TechnologyController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\CrewController;
+use App\Http\Controllers\Api\DestinationController;
+use App\Http\Controllers\Api\TechnologyController;
 use Illuminate\Support\Facades\Route;
 
 
