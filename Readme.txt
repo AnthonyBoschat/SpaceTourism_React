@@ -23,7 +23,7 @@ node		-> 20.18.0
 4. Installer les dépendance PHP ( attendre la fin de l'installation ), dans le terminal : " composer install  "
 5. Générer la clé d'application, dans le terminal : " php artisan key:generate "
 6. Vérifier que dans le fichier .env, à la ligne 3 (APP_KEY) -> il doit posséder une valeur.
-
+7. Créer le symlink -> " php artisan storage:link "
 7. Applications les migrations et seeder la base de donnée -> " php artisan migrate:fresh --seed "
 
 8. Installer les dépendance node : " npm install "
