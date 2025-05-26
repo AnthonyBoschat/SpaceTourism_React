@@ -15,8 +15,9 @@ php 		-> 8.4.4
 composer 	-> 2.8.6
 node		-> 20.18.0
 
+0 (optionnel mais jolie). Pour avoir un jolie vs code tout bleu -> dans vscode -> fichier -> ouvrir le dossier -> ouvrir le dossier cloner
 
-1. Naviguer dans le dossier Backend depuis le terminal : " cd .\SpaceTourism_React\Backend\ "
+1. Naviguer dans le dossier Backend depuis le terminal : " cd .\SpaceTourism_React\Backend\ " ou " cd .\Backend\ " si déjà dans le dossier SpaceTourism_React
 2. Créer un nouveau fichier .env qui contient les informations de .env.example au même niveau que .env.example
 3. Dans le fichier .env à la ligne 5  "APP_URL" -> indiquer  " http://localhost:8000 "
 4. Installer les dépendance PHP ( attendre la fin de l'installation ), dans le terminal : " composer install  "
