@@ -24,7 +24,7 @@ node		-> 20.18.0
 5. Générer la clé d'application, dans le terminal : " php artisan key:generate "
 6. Vérifier que dans le fichier .env, à la ligne 3 (APP_KEY) -> il doit posséder une valeur.
 
-7. Applications les migrations et seeder la base de donnée -> " php artisan migrate --seed "
+7. Applications les migrations et seeder la base de donnée -> " php artisan migrate:fresh --seed "
 
 8. Installer les dépendance node : " npm install "
 9. Démarrer une première fois via npm pour compiler les assets front : " npm run dev "
