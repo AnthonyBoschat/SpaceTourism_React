@@ -19,7 +19,6 @@ node		-> 20.18.0
 
 1. Naviguer dans le dossier Backend depuis le terminal : " cd .\SpaceTourism_React\Backend\ " ou " cd .\Backend\ " si déjà dans le dossier SpaceTourism_React
 2. Créer un nouveau fichier .env qui contient les informations de .env.example au même niveau que .env.example
-3. Dans le fichier .env à la ligne 5  "APP_URL" -> indiquer  " http://localhost:8000 "
 4. Installer les dépendance PHP ( attendre la fin de l'installation ), dans le terminal : " composer install  "
 5. Générer la clé d'application, dans le terminal : " php artisan key:generate "
 6. Vérifier que dans le fichier .env, à la ligne 3 (APP_KEY) -> il doit posséder une valeur.
@@ -35,7 +34,7 @@ node		-> 20.18.0
 Le serveur est disponible à cet url : " http://127.0.0.1:8000 "
 
 Pour s'y connecter il est possible de créer un compte.
-ou sinon, par défaut un compte existe déjà (Je sais que c'est archi pas sécurisé de mettre ça dans le readme, mais ça reste ud local donc osef) :
+ou sinon, par défaut un compte existe déjà (Je sais que c'est archi pas sécurisé de mettre ça dans le readme, mais ça reste du local donc osef) :
 
 Login       : admin@admin.test
 Password    : password
