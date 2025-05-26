@@ -15,7 +15,7 @@ php 		-> 8.4.4
 composer 	-> 2.8.6
 node		-> 20.18.0
 
-0. Supprimer le suivi git ( va pas poluer mon dépôt par erreur :3 ) :  " git remote remove origin "
+
 1. Naviguer dans le dossier Backend depuis le terminal : " cd .\SpaceTourism_React\Backend\ "
 2. Créer un nouveau fichier .env qui contient les informations de .env.example au même niveau que .env.example
 3. Dans le fichier .env à la ligne 5  "APP_URL" -> indiquer  " http://localhost:8000 "
