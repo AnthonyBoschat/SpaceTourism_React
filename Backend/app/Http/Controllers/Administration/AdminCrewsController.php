@@ -17,22 +17,64 @@ class AdminCrewsController extends Controller
     }
 
 
+    /**
+     * Display a paginated list of crew members in the admin panel.
+     *
+     * @group Admin – Crews
+     * @authenticated
+     * @response 200 {
+     *   "<table>…</table>" // Extrait HTML du tableau paginé
+     * }
+     */
     public function index()
     {
         $crews = Crew::paginate();
         return view("admin.crews.index", compact("crews"));
     }
 
+    /**
+     * Show the form to create a new crew member.
+     *
+     * @group Admin – Crews
+     * @authenticated
+     * @response 200 {
+     *   "<form method=\"POST\" action=\"/admin/crews\">…</form>"
+     * }
+     */
     public function create()
     {
         return view("admin.crews.create");
     }
 
+    /**
+     * Show the form to edit an existing crew member.
+     *
+     * @group Admin – Crews
+     * @authenticated
+     * @urlParam crew integer required The ID of the crew member. Example: 1
+     * @response 200 {
+     *   "<form method=\"POST\" action=\"/admin/crews/{crew}\">…</form>"
+     * }
+     */
     public function edit(Crew $crew)
     {
         return view("admin.crews.edit", compact("crew"));
     }
 
+    /**
+     * Update an existing crew member.
+     *
+     * @group Admin – Crews
+     * @authenticated
+     * @urlParam crew integer required The ID of the crew member. Example: 1
+     * @bodyParam name string required The name. Example: "Jane Smith"
+     * @bodyParam role string required The role. Example: "Director"
+     * @bodyParam presentation string required The presentation text.
+     * @bodyParam image file Nullable New image (jpeg,png,webp…). Max 2 MB.
+     * @response 302 {
+     *   "redirect": "/admin/crews"
+     * }
+     */
     public function update(StoreCrewRequest $request, Crew $crew){
         $validated = $request->validated();
 
@@ -52,6 +94,19 @@ class AdminCrewsController extends Controller
     }
 
 
+    /**
+     * Store a new crew member.
+     *
+     * @group Admin – Crews
+     * @authenticated
+     * @bodyParam name string required The name. Example: "Bob Brown"
+     * @bodyParam role string required The role. Example: "Producer"
+     * @bodyParam presentation string required The presentation text.
+     * @bodyParam image file Nullable Image file. Max 2 MB.
+     * @response 302 {
+     *   "redirect": "/admin/crews"
+     * }
+     */
     public function store(StoreCrewRequest $request)
     {
 
@@ -68,6 +123,16 @@ class AdminCrewsController extends Controller
                 ->withMessage("Crew member added successfully");
     }
 
+    /**
+     * Delete a crew member.
+     *
+     * @group Admin – Crews
+     * @authenticated
+     * @urlParam crew integer required The ID of the crew member. Example: 1
+     * @response 302 {
+     *   "redirect": "/admin/crews"
+     * }
+     */
     public function delete(Crew $crew)
     {
         $crew->delete();

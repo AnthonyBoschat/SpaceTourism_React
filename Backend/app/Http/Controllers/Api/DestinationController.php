@@ -13,41 +13,27 @@ class DestinationController extends Controller
     public function __construct(private imageServiceInterface $imageService) {
     }
 
+    /**
+     * Get the full list of destinations
+     *
+     * @group Destination
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 1,
+     *       "name": "Mars",
+     *       "description": "La planète rouge…",
+     *       "distance": "225 million km",
+     *       "travelTime": "7 mois",
+     *       "image": "destinations/mars.jpg",
+     *       "created_at": "2025-04-15T10:00:00.000000Z",
+     *       "updated_at": "2025-05-20T14:30:00.000000Z"
+     *     }
+     *   ]
+     * }
+     */
     public function index(){
         $destinations = Destination::all();
         return $destinations;
-    }
-
-    public function update(Request $request){
-        $validated = $request->validate([
-            'id'            => 'required|integer|exists:crews,id',
-            'name'          => 'required|string|max:255',
-            'description'   => 'required|string',
-            'distance'      => 'nullable|string',
-            'travelTime'    => 'nullable|string',
-            'image'         => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-
-        ]);
-        $destination = Destination::findOrFail($validated['id']);
-        $validated['image'] = $this->imageService->update($request, $destination, "destinations");
-
-        $destination->update([
-            'name'         => $validated['name'],
-            'description'         => $validated['description'],
-            'distance' => $validated['distance'],
-            'travelTime' => $validated['travelTime'],
-            'image'        => $validated['image'] ?? $destination->image,
-        ]);
-        return response()->json($destination, 200);
-    }
-
-    public function delete(Request $request){
-        $validated = $request->validate([
-            "id" => "required|integer|exists:crews,id",
-        ]);
-        $destination = Destination::findOrFail($validated['id']);
-        $destination->delete();
-
-        return response()->json($validated['id']);
     }
 }

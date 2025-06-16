@@ -14,41 +14,26 @@ class CrewController extends Controller
         
     }
 
+     /**
+     * Get the full list of crew members
+     *
+     * @group Crew
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 1,
+     *       "name": "Alice",
+     *       "role": "Director",
+     *       "presentation": "Lorem ipsum…",
+     *       "image": "crews/1.jpg",
+     *       "created_at": "2025-06-01T12:34:56.000000Z",
+     *       "updated_at": "2025-06-10T08:21:45.000000Z"
+     *     }
+     *   ]
+     * }
+     */
     public function index(){
         $crews = Crew::all();
         return $crews;
-    }
-
-
-    public function update(Request $request){
-        $validated = $request->validate([
-            'id'            => 'required|integer|exists:crews,id',
-            'name'          => 'required|string|max:255',
-            'role'          => 'required|string|max:255',
-            'presentation'  => 'nullable|string',
-            'image'         => 'nullable|file|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-        ]);
-        $crewMember = Crew::findOrFail($validated['id']);
-
-        $validated['image'] = $this->imageService->update($request, $crewMember, "crews");
-
-        $crewMember->update([
-            'name'         => $validated['name'],
-            'role'         => $validated['role'],
-            'presentation' => $validated['presentation'],
-            'image'        => $validated['image'] ?? $crewMember->image,
-        ]);
-        
-        return response()->json($crewMember, 200);
-    }
-
-    public function delete(Request $request){
-        $validated = $request->validate([
-            "id" => "required|integer|exists:crews,id",
-        ]);
-        $crewMember = Crew::findOrFail($validated['id']);
-        $crewMember->delete();
-
-        return response()->json($validated['id']);
     }
 }

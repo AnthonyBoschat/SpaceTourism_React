@@ -1,0 +1,413 @@
+name: 'Admin – Destinations'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: admin/destinations/index
+    metadata:
+      groupName: 'Admin – Destinations'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a paginated list of destinations in the admin panel.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "<table>…</table>" // Extrait HTML du tableau paginé
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'admin/destinations/edit/{destination_id}'
+    metadata:
+      groupName: 'Admin – Destinations'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the form to edit an existing destination.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      destination_id:
+        name: destination_id
+        description: 'The ID of the destination.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      destination:
+        name: destination
+        description: 'The ID of the destination.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      destination_id: 1
+      destination: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "<form method=\"POST\" action=\"/admin/destinations/{destination}\">…</form>"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: admin/destinations/create
+    metadata:
+      groupName: 'Admin – Destinations'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Show the form to create a new destination.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "<form method=\"POST\" action=\"/admin/destinations\">…</form>"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'admin/destinations/delete/{destination_id}'
+    metadata:
+      groupName: 'Admin – Destinations'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete a destination.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      destination_id:
+        name: destination_id
+        description: 'The ID of the destination.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      destination:
+        name: destination
+        description: 'The ID of the destination.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      destination_id: 1
+      destination: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "redirect": "/admin/destinations"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: admin/destinations/store
+    metadata:
+      groupName: 'Admin – Destinations'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a new destination.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the destination.'
+        required: true
+        example: '"Titan"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'A description.'
+        required: true
+        example: '"Lune de Saturne couverte de brume…"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      distance:
+        name: distance
+        description: 'Nullable Distance from Earth.'
+        required: false
+        example: '"1.4 billion km"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      travelTime:
+        name: travelTime
+        description: 'Nullable Estimated travel time.'
+        required: false
+        example: '"7 ans"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'Nullable Image file. Max 2 MB.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: '"Titan"'
+      description: '"Lune de Saturne couverte de brume…"'
+      distance: '"1.4 billion km"'
+      travelTime: '"7 ans"'
+    fileParameters:
+      image: null
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "redirect": "/admin/destinations"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'admin/destinations/update/{destination_id}'
+    metadata:
+      groupName: 'Admin – Destinations'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update an existing destination.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: multipart/form-data
+      Accept: application/json
+    urlParameters:
+      destination_id:
+        name: destination_id
+        description: 'The ID of the destination.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      destination:
+        name: destination
+        description: 'The ID of the destination.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      destination_id: 1
+      destination: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the destination.'
+        required: true
+        example: '"Europa"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      description:
+        name: description
+        description: 'A description.'
+        required: true
+        example: '"Lune glacée de Jupiter…"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      distance:
+        name: distance
+        description: 'Nullable Distance from Earth.'
+        required: false
+        example: '"628 million km"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      travelTime:
+        name: travelTime
+        description: 'Nullable Estimated travel time.'
+        required: false
+        example: '"6 ans"'
+        type: string
+        enumValues: []
+        exampleWasSpecified: true
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'Nullable New image (jpeg,png,webp…). Max 2 MB.'
+        required: false
+        example: null
+        type: file
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: '"Europa"'
+      description: '"Lune glacée de Jupiter…"'
+      distance: '"628 million km"'
+      travelTime: '"6 ans"'
+    fileParameters:
+      image: null
+    responses:
+      -
+        status: 302
+        content: |-
+          {
+            "redirect": "/admin/destinations"
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

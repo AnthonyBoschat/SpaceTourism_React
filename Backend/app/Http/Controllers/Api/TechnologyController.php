@@ -14,37 +14,25 @@ class TechnologyController extends Controller
         
     }
 
+     /**
+     * Get the full list of technologies
+     *
+     * @group Technology
+     * @response 200 {
+     *   "data": [
+     *     {
+     *       "id": 1,
+     *       "name": "Hyperdrive",
+     *       "presentation": "Système de propulsion supraluminique…",
+     *       "image": "technology/hyperdrive.jpg",
+     *       "created_at": "2025-02-10T11:00:00.000000Z",
+     *       "updated_at": "2025-06-01T09:45:00.000000Z"
+     *     }
+     *   ]
+     * }
+     */
     public function index(){
         $all_technology = Technology::all();
         return $all_technology;
-    }
-
-    public function update(Request $request){
-        $validated = $request->validate([
-            'id'           => 'required|integer|exists:crews,id',
-            'name'         => 'required|string|max:255',
-            'presentation'         => 'required|string',
-        ]);
-        $technology = Technology::findOrFail($validated['id']);
-
-        $validated['image'] = $this->imageService->update($request, $technology, "technology");
-
-        $technology->update([
-            'name'         => $validated['name'],
-            'presentation'         => $validated['presentation'],
-            'image'        => $validated['image'] ?? $technology->image,
-
-        ]);
-        return response()->json($technology, 200);
-    }
-
-    public function delete(Request $request){
-        $validated = $request->validate([
-            "id" => "required|integer|exists:crews,id",
-        ]);
-        $technology = Technology::findOrFail($validated['id']);
-        $technology->delete();
-
-        return response()->json($validated['id']);
     }
 }

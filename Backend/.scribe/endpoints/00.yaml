@@ -1,0 +1,53 @@
+name: Destination
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/destinations/index
+    metadata:
+      groupName: Destination
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Get the full list of destinations'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "data": [
+              {
+                "id": 1,
+                "name": "Mars",
+                "description": "La planète rouge…",
+                "distance": "225 million km",
+                "travelTime": "7 mois",
+                "image": "destinations/mars.jpg",
+                "created_at": "2025-04-15T10:00:00.000000Z",
+                "updated_at": "2025-05-20T14:30:00.000000Z"
+              }
+            ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
